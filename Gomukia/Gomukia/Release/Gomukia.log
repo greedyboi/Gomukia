@@ -1,0 +1,4 @@
+﻿  Gomukia.cpp
+Gomukia.cpp(4): fatal error C1083: Impossible d'ouvrir le fichier en-tête précompilé : 'Release\Gomukia.pch' : No such file or directory
+  Handler.cpp
+Handler.cpp(1): fatal error C1083: Impossible d'ouvrir le fichier en-tête précompilé : 'Release\Gomukia.pch' : No such file or directory
