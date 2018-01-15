@@ -1,0 +1,3 @@
+﻿  Handler.cpp
+c:\users\53365\documents\gomukia-master\gomukia-master\gomukia\gomukia\handler.cpp(43): warning C4101: 'mode' : variable locale non référencée
+  Gomukia.vcxproj -> C:\Users\53365\Documents\Gomukia-master\Gomukia-master\Gomukia\x64\Debug\pbrain-gomukia.exe

@@ -9,10 +9,12 @@
 class Handler
 {
 public:
-	Handler() { 
-		bd.resize(100);
-		for (auto i : bd)
-			i.resize(100);
+	Handler() {
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+				bd[i][j] = 0;
+		}
 	};
 	virtual ~Handler() {};
 	
@@ -47,6 +49,7 @@ public:
 	std::string get_cmd();
 	static std::string get_params(std::string&, std::string&);
 
+	void play();
 	// Getters and setters
 	void time_left_set(int time) { time_left = time; };
 	int	get_time_left() const { return time_left; };
@@ -64,8 +67,8 @@ public:
 	std::string get_folder() const { return folder; };
 
 private:
-	std::vector<std::vector<int>> bd;
-	int size;
+	int size = 100;
+	int bd[100][100];
 	int timeout_turn = 0;
 	int timeout_match = 0;
 	int max_memory = 1;

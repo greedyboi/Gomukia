@@ -42,8 +42,8 @@ void Handler::handle()
 
 	DWORD mode;
 
-	if (GetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), &mode))
-		puts("MESSAGE Gomoku AI should not be started directly. Please install gomoku manager (http://sourceforge.net/projects/piskvork). Then enter path to this exe file in players settings.");
+	//if (GetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), &mode))
+	//	puts("MESSAGE Gomoku AI should not be started directly. Please install gomoku manager (http://sourceforge.net/projects/piskvork). Then enter path to this exe file in players settings.");
 
 	while (1)
 	{
@@ -91,24 +91,37 @@ void Handler::board(std::string params)
 		}
 		bd[x][y] = who;
 	}
+	play();
+}
+
+// AI Turn
+void Handler::play()
+{
+	int x, y;
+
+	x = rand() % size;
+	y = rand() % size;
+	while (bd[x][y] != 0)
+	{
+		x = rand() % size;
+		y = rand() % size;
+	}
+	bd[x][y] = 1;
+	response("%d,%d", x, y);
 }
 
 // Initialize the board
 void Handler::start(std::string params)
 {
 	size = std::atoi(params.c_str());
-	bd.resize(std::atoi(params.c_str()));
-	for (auto i : bd)
-		i.resize(std::atoi(params.c_str()));
+	response("OK");
 }
 
 
 // AI's move
 void Handler::begin(std::string params)
 {
-	bd.clear();
-	start(std::string("20"));
-	turn(std::string("10,10"));
+	play();
 }
 
 
@@ -120,6 +133,8 @@ void Handler::turn(std::string params)
 	if (sscanf_s(params.c_str(), "%d,%d", &x, &y) != 2 || x > 100 || y > 100
 		|| x < 0 || y < 0)
 		response("ERROR Bad coordinates");
+	bd[x][y] = 2;
+	play();
 }
 
 
